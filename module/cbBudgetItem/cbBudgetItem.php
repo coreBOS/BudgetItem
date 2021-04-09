@@ -191,11 +191,11 @@ class cbBudgetItem extends CRMEntity {
 			$adb->pquery('update vtiger_cbbudgetitem set rexpense=? where cbbudgetitemid=?', array($rexpense,$budiid));
 
 			//	eincome-eexpense(etotal)
-		if (isset($data['eincome']) && isset($data['eexpense'])) {
-			$eincome = CurrencyField::convertToDBFormat($data['eincome']);
-			$eexpense = CurrencyField::convertToDBFormat($data['eexpense']);
-			$etotal = $eincome-$eexpense;
-		}
+			if (isset($data['eincome']) && isset($data['eexpense'])) {
+				$eincome = CurrencyField::convertToDBFormat($data['eincome']);
+				$eexpense = CurrencyField::convertToDBFormat($data['eexpense']);
+				$etotal = $eincome-$eexpense;
+			}
 			$adb->pquery('update vtiger_cbbudgetitem set etotal=? where cbbudgetitemid=?', array($etotal, $budiid));
 
 			//rincome-rexpense(rtotal)
