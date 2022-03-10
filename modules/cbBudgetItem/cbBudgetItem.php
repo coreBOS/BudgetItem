@@ -207,7 +207,11 @@ class cbBudgetItem extends CRMEntity {
 			$adb->pquery('update vtiger_cbbudgetitem set deviationamount=? where cbbudgetitemid=?', array($deviationamount, $budiid));
 
 			//etotal*100/rtotal=deviationpercentage
-			$deviationpercentage=($etotal *100/$rtotal);
+			if ($rtotal == 0) {
+				$deviationpercentage = 0;
+			} else {
+				($deviationpercentage=($etotal *100/$rtotal));
+			};
 			$adb->pquery('update vtiger_cbbudgetitem set deviationpercentage=? where cbbudgetitemid=?', array($deviationpercentage,$budiid));
 	}
 	/**
